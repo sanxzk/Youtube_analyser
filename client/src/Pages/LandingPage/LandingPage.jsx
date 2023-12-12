@@ -45,7 +45,7 @@ const LandingPage = () => {
       try {
         setProgress(30);
         const response = await axios.get(
-          "https://youtube-video-analyser-backend.vercel.app/api/video",
+          "https://youtube-analyser-backend.vercel.app/api/video",
           config
         );
         setProgress(60);

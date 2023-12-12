@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import "./CallBackModal.css";
 
 const APIURL =
-  "https://youtube-video-analyser-backend.vercel.app/api/callback/request";
+  "https://youtube-analyser-backend.vercel.app/api/callback/request";
 const Modal = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
   const [progress, setProgress] = useState(0);
