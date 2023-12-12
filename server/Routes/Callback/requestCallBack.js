@@ -4,7 +4,7 @@ const requestCallBack = async (req, res) => {
   let errorCode = null;
   try {
     const { name, mobile, preferredSlot } = req.body;
-    await sendCallBackMail("sharmasanjna0514@gmail.com", {
+    await sendCallBackMail("sharmasanjana0514@gmail.com", {
       name,
       mobile,
       preferredSlot,
