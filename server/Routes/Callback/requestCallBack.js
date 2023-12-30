@@ -9,13 +9,6 @@ const requestCallBack = async (req, res) => {
       mobile,
       preferredSlot,
     });
-    if (process.env.ravi_email) {
-      await sendCallBackMail(process.env.other_email, {
-        name,
-        mobile,
-        preferredSlot,
-      });
-    }
     res.status(200).json({ success: "true", message: "Call Back registered" });
   } catch (err) {
     res.status(errorCode || 500).json({
