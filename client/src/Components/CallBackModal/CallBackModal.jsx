@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import "./CallBackModal.css";
 
 const APIURL =
-  "https://youtube-analyser-backend.vercel.app/api/callback/request";
+"https://youtube-analyser-backend.vercel.app/api/callback/request";
 const Modal = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
   const [progress, setProgress] = useState(0);
@@ -142,11 +142,11 @@ const CallBackModal = () => {
   return (
     <div>
       <div onClick={openModal} className="request-call-back-button">
-        <span>
+        <p>
           {" "}
           <img alt="phone icon" src={Phone} />
-          Request a call back
-        </span>
+          <span> Request a call back</span>
+        </p>
       </div>
       <div className="modal">
         <Modal isOpen={modalIsOpen} onClose={closeModal} />

@@ -1,5 +1,31 @@
 /* App.css */
 
+.request-call-back-button {
+  border: 0.1px solid white;
+  outline: none;
+  padding: 0.5rem 1rem;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  height: auto;
+  text-align: center;
+  width: 17vw;
+  cursor: pointer;
+  border-radius: 2vh;
+}
+.request-call-back-button :hover {
+  cursor: pointer;
+}
+.request-call-back-button p {
+  color: white;
+  font-size: 1.25rem;
+  font-family: Inter;
+  font-weight: 400;
+  word-wrap: break-word;
+  margin: auto;
+}
+
 .modal-overlay {
   position: fixed;
   z-index: 1;
@@ -96,4 +122,85 @@
   font-family: Inter;
   font-weight: 400;
   word-wrap: break-word;
+}
+/* Media Queries */
+
+/* Mobile Devices */
+@media screen and (max-width: 600px) {
+  .request-call-back-button {
+    
+    width: 80%;
+  }
+
+  .request-call-back-button p {
+    font-size: 1rem;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .modal-content {
+    width: 80%;
+    height: auto + 2rem;
+    margin: 10rem 0rem;
+    margin-left: -2rem;
+  }
+
+  .request-heading {
+    font-size: 5vw;
+  }
+
+  .request-input {
+    width: 80%;
+    font-size: 4vw;
+  }
+
+  .request-submit {
+    width: 60%;
+    font-size: 4vw;
+  }
+
+  .callback-done-text,
+  .check-another-button {
+    font-size: 3vw;
+  }
+}
+
+/* Tablet Devices */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  .request-call-back-button {
+    width: 50%;
+  }
+
+  .request-call-back-button p {
+    font-size: 3vw;
+  }
+
+  .modal-content {
+    width: 50%;
+    height: auto;
+  }
+
+  .request-heading {
+    font-size: 4vw;
+  }
+
+  .request-input {
+    width: 50%;
+    font-size: 3vw;
+  }
+
+  .request-submit {
+    width: 40%;
+    font-size: 3vw;
+  }
+
+  .callback-done-text,
+  .check-another-button {
+    font-size: 2.5vw;
+  }
+}
+
+/* Laptop Devices and Larger */
+@media screen and (min-width: 1025px) {
+  /* No additional styles needed for laptops and larger screens */
 }

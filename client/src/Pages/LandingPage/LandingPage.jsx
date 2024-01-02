@@ -83,6 +83,7 @@ const LandingPage = () => {
       }}
     >
       <LoadingBar
+        style={{ overflow: "hidden" }}
         color={"red"}
         progress={progress}
         onLoaderFinished={() => setProgress(0)}

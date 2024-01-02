@@ -17,7 +17,7 @@ const MainVideoCard = (props) => {
             src={data.details.thumbnail}
           />
           <p className="uploaded-on-text">
-            Uploded On: {formatDate(data.details.uploadedOn)}
+            Uploaded On: {formatDate(data.details.uploadedOn)}
           </p>
         </div>
         <div className="stats-container">
@@ -47,7 +47,7 @@ const MainVideoCard = (props) => {
             &nbsp; {data.details.comments}
           </span>
         </div>
-        <div style={{ width: "40%" }}>
+        <div style={{ width: "40%",margin:"auto" }}>
           <div className="earnings-box">
             {data.earnings} INR
             <button className="check-button">Check How?</button>

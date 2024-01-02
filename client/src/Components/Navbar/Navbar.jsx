@@ -17,8 +17,7 @@ const Navbar = () => {
           className="logo-container"
         >
           <img className="logo-image" src={logo} alt="Logo" />
-          <div className="logo-text">anchors</div>
-          <div className="beta-badge">Beta</div>
+          <div className="logo-text"> Youtube Video Analyser</div>
         </div>
         <div className="second-part-container">
           <CallBackModal />
