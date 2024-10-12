@@ -7,10 +7,10 @@ async function getVideoInfo(link) {
   try {
     const videoId = link.split("/watch?v=")[1];
     const apiUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=${videoId}&key=${apiKey}`;
-    console.log(apiUrl);
+    // console.log(apiUrl);
     const response = await axios.get(apiUrl);
     const data = await response.data;
-    console.log(data);
+    // console.log(data.items[0].statistics)
     if (data.items && data.items.length > 0) {
       const video = data.items[0];
       const { snippet, statistics } = video;
@@ -20,7 +20,7 @@ async function getVideoInfo(link) {
         title: snippet.title,
         views: statistics.viewCount,
         likes: statistics.likeCount,
-        comments: statistics.commentCount,
+        comments: statistics.commentCount?statistics.commentCount:0,
         uploadedOn: snippet.publishedAt,
         subscribers,
       };

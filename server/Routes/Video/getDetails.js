@@ -1,12 +1,17 @@
 const getVideoInfo = require("../../controller/getVideoInfo");
 const calculateEarnings = require("../../controller/calculateEarnings");
+
 const getDetails = async (req, res) => {
   let errorCode = null;
   try {
     const link = req.headers.link;
-    const details = await getVideoInfo(link);
-    const earnings = calculateEarnings(details);
+
+    // this function internally do an api call to youtube's
+    // data api and returns the data about the video.
+    const details = await getVideoInfo(link); 
+    
     if (details) {
+      const earnings = calculateEarnings(details);
       res.status(200).json({ success: true, details, earnings });
     } else {
       errorCode = 404;

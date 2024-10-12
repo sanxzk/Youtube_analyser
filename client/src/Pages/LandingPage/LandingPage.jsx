@@ -11,9 +11,11 @@ import LoadingBar from "react-top-loading-bar";
 const LandingPage = () => {
   const [progress, setProgress] = useState(0);
   const navigate = useNavigate();
+
   const queryParameters = new URLSearchParams(window.location.search);
   let searchedLink = queryParameters.get("link");
   if (searchedLink) searchedLink = searchedLink.trim();
+
   const [link, setLink] = useState("");
   const [data, setData] = useState({
     success: false,
@@ -28,13 +30,19 @@ const LandingPage = () => {
     },
     earnings: 0,
   });
+
+
   const linkHandler = (e) => {
     setLink(e.target.value);
   };
+
+
   useEffect(() => {
     console.log("searched link = ", searchedLink);
+
     const fetchData = async () => {
       setProgress(10);
+
       const config = {
         headers: {
           "Content-Type": "application/json",
@@ -42,25 +50,22 @@ const LandingPage = () => {
         },
       };
       setProgress(20);
+
       try {
         setProgress(30);
+
         const response = await axios.get(
           "https://youtube-analyser-backend.vercel.app/api/video",
           config
         );
-        setProgress(60);
-        const videoId = searchedLink.split("?v=")[1];
 
-        let linksList = JSON.parse(localStorage.getItem("links")) || [];
-        setProgress(70);
-        if (!linksList.includes(videoId)) {
-          linksList.push(videoId);
-          localStorage.setItem("links", JSON.stringify(linksList));
-        }
+        // setProgress(60);
+
         setProgress(90);
         if (response.status === 200) {
           setData(response.data);
         }
+
         setProgress(100);
       } catch (err) {
         setProgress(100);
@@ -68,8 +73,11 @@ const LandingPage = () => {
         toast.warn("Video Not Found");
       }
     };
+    
     if (searchedLink) fetchData();
   }, [searchedLink]);
+
+
   return (
     <div
       style={{
@@ -80,6 +88,7 @@ const LandingPage = () => {
         textAlign: "center",
         alignContent: "center",
         margin: "2rem auto",
+        
       }}
     >
       <LoadingBar
@@ -88,6 +97,8 @@ const LandingPage = () => {
         progress={progress}
         onLoaderFinished={() => setProgress(0)}
       />
+
+
       <h1 className="heading-h1"> Discover your earning potential </h1>
       <h3 className="heading-h3">
         Turn your Youtube expertise into a lucrative income through resource
@@ -105,6 +116,7 @@ const LandingPage = () => {
               onChange={linkHandler}
             />
           </div>
+
           <button
             onClick={(e) => {
               e.preventDefault();
@@ -116,6 +128,7 @@ const LandingPage = () => {
           </button>
         </form>
       </div>
+
       <div className="play-art">
         <img alt="playicon" className="play-img" src={playButton} />
       </div>

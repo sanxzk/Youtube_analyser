@@ -8,8 +8,10 @@ import { useNavigate } from "react-router-dom";
 import "./CallBackModal.css";
 
 const APIURL =
-"https://youtube-analyser-backend.vercel.app/api/callback/request";
+"https://youtube-analyser-backend.vercel.app/api/callback/request"; 
+
 const Modal = ({ isOpen, onClose }) => {
+
   const navigate = useNavigate();
   const [progress, setProgress] = useState(0);
   const [callBackDetails, setCallBackDetails] = useState({
@@ -17,6 +19,7 @@ const Modal = ({ isOpen, onClose }) => {
     mobileNumber: "",
     preferredTime: "",
   });
+
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
@@ -42,9 +45,12 @@ const Modal = ({ isOpen, onClose }) => {
       toast.error(`call back registration failed due to ${err.message}`);
     }
   };
+
+
   const onChangeHandler = (e) => {
     setCallBackDetails({ ...callBackDetails, [e.target.name]: e.target.value });
   };
+  
   const [callBackSent, setCallBackSent] = useState(false);
   if (!isOpen) {
     return null;
@@ -128,6 +134,8 @@ const Modal = ({ isOpen, onClose }) => {
   }
 };
 
+
+// usestate used for request call back open or closed
 const CallBackModal = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -143,7 +151,6 @@ const CallBackModal = () => {
     <div>
       <div onClick={openModal} className="request-call-back-button">
         <p>
-          {" "}
           <img alt="phone icon" src={Phone} />
           <span> Request a call back</span>
         </p>

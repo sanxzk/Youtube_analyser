@@ -3,7 +3,8 @@ import viewIcon from "../../images/viewIcon.svg";
 import likeIcon from "../../images/likeIcon.svg";
 import commentIcon from "../../images/commentIcon.svg";
 
-const MainVideoCard = (props) => {
+const 
+MainVideoCard = (props) => {
   const data = props.data;
   console.log("main video", data);
   return (
