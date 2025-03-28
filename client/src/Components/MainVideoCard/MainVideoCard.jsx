@@ -50,7 +50,7 @@ MainVideoCard = (props) => {
         </div>
         <div style={{ width: "40%",margin:"auto" }}>
           <div className="earnings-box">
-            {data.earnings} INR
+            {data.details.comments} INR
             <button className="check-button">Check How?</button>
           </div>
         </div>
