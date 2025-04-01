@@ -10,7 +10,9 @@ const LAYOUT = {
     width: "65%",
     flexDirection: { xs: "column", md: "row" },
     bgcolor: "rgba(95, 0, 0, 0.16)",
-    margin: "3.5rem",
+    margin: "4.5rem 3rem 3rem 3rem",
+    borderRadius: "10px",
+    border: "2px solid rgba(130, 130, 130, 0.93)",
   },
   leftBox: {
     width: { xs: "100%", md: "25%" },
@@ -30,23 +32,13 @@ const LAYOUT = {
     width: { xs: "100%", md: "25%" },
     bgcolor: "transparent",
     padding: "1rem",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
 };
 
-
 const VideoDataCont = ({ data }) => {
-  // Use props for data or default to sample data
-  // const details = videoData || {
-  //   thumbnail: "https://i.ytimg.com/vi/9T-Zbxg9X_4/maxresdefault.jpg",
-  //   title: "Paresh Pahuja - Dooron Dooron (Live from The Voice Notes Concert)",
-  //   views: "4,949,852",
-  //   likes: "81,155",
-  //   comments: "1,328",
-  //   uploadedOn: "2024-12-06T06:45:00Z",
-  //   subscribers: "75,600",
-  //   earnings: "$494,655",
-  // };
-
   return (
     <Grid container sx={LAYOUT.container}>
       <Box sx={LAYOUT.leftBox}>
@@ -86,8 +78,10 @@ const VideoDataCont = ({ data }) => {
       </Box>
 
       <Box sx={LAYOUT.rightBox}>
-        <EarnTypography variant="body1"> {data.details.earnings}</EarnTypography>
-        
+        <EarnTypography variant="body1">
+          {" "}
+          {data.details.earnings}
+        </EarnTypography>
       </Box>
     </Grid>
   );
@@ -109,7 +103,7 @@ const IconStyle = styled(Box)(() => ({
   justifyContent: "space-between",
   alignItems: "center",
   textAlign: "center",
-  gap:20
+  gap: 20,
 }));
 
 const IconCont = styled(Grid)(() => ({
