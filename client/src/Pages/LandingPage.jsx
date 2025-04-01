@@ -14,7 +14,7 @@ const LandingPage = () => {
         <TypographyGrid>
           <Typography
             variant="h3"
-            sx={{ color: "rgba(247, 112, 112, 0.94)", fontWeight: 600 }}
+            sx={{ color: "rgba(247, 112, 112, 0.94)", fontWeight: 600, fontSize:{sm:'3rem', md:'3rem', lg:'3rem', xs:'2.5rem'} }}
           >
             Discover your earning potential
           </Typography>

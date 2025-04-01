@@ -5,6 +5,7 @@ const initialState = {
     isLoading:false,
     error:null,
     currVideo:null,
+    currVideoLink:null,
     history:[],
     saved:[],
     comparison:[],
@@ -13,7 +14,11 @@ const initialState = {
 const DataSlice = createSlice({
     name:'YoutubeData',
     initialState,
-    reducers:{},
+    reducers:{
+        setCurrVideoLink:(state,action)=>{
+            state.currVideoLink = action.payload;
+        }
+    },
 
     extraReducers:(builder)=>{
         builder
@@ -38,3 +43,4 @@ const DataSlice = createSlice({
 });
 
 export default DataSlice.reducer;
+export const {setCurrVideoLink}=DataSlice.actions;

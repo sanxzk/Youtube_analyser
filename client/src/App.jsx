@@ -5,15 +5,18 @@ import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import { Provider } from "react-redux";
 import store from "./features/Store";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
-    <Provider store={store}>
+    <Provider  store={store}>
+    <BrowserRouter>
       <Grid>
         <Navbar />
         <LandingPage />
         <Footer />
       </Grid>
+      </BrowserRouter>
     </Provider>
   );
 }
