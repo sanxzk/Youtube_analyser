@@ -3,9 +3,16 @@ const getSubscriberCount = require("./getSubscriberCount");
 
 const apiKey = process.env.apiKey;
 
+function getYouTubeVideoId(link) {
+  const regex =
+    /(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/|youtube\.com\/shorts\/)([^"&?/ ]{11})/;
+  const match = link.match(regex);
+  return match ? match[1] : null;
+}
+
 async function getVideoInfo(link) {
   try {
-    const videoId = link.split("/watch?v=")[1];
+    const videoId =  getYouTubeVideoId(link);
     const apiUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=${videoId}&key=${apiKey}`;
     // console.log(apiUrl);
     const response = await axios.get(apiUrl);
