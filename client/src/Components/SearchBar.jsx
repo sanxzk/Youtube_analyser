@@ -8,29 +8,75 @@ import { keyframes } from "@mui/system";
 import { styled } from "@mui/material/styles";
 import { setCurrVideoLink } from "../features/DataSlice";
 
-// Define animations
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
+const SearchBar = () => {
+  const [link, setLink] = useState("");
+  const [isSearching, setIsSearching] = useState(false);
+  const dispatch = useDispatch();
+  const inputRef = useRef(null);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-const pulse = keyframes`
-  0% {
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-  }
-`;
+  const updateLink = (event) => {
+    setLink(event.target.value);
+  };
+
+  const handleSearch = () => {
+    if (link.trim()) {
+      setIsSearching(true);
+      dispatch(setCurrVideoLink(link))
+      dispatch(fetchVideoData(link))
+        .finally(() => {
+          setIsSearching(false);
+        });
+    }
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleSearch();
+    }
+  };
+
+  const handleFocus = () => {
+    if (inputRef.current) {
+      inputRef.current.select();
+    }
+  };
+
+  return (
+    <SearchContainer>
+      <SearchPaper elevation={3}>
+        <LinkIconWrapper />
+        <StyledInputBase
+          placeholder={isMobile ? "Enter YouTube link" : "Enter YouTube video link to analyze"}
+          value={link}
+          onChange={updateLink}
+          onKeyDown={handleKeyDown}
+          inputRef={inputRef}
+          onFocus={handleFocus}
+          inputProps={{ 'aria-label': 'search youtube video' }}
+          startAdornment={null}
+          fullWidth
+        />
+        <StyledDivider orientation="vertical" />
+        <Tooltip title="Search">
+          <AnimatedIconButton 
+            color="primary" 
+            aria-label="search video"
+            onClick={handleSearch}
+            disabled={isSearching || !link.trim()}
+          >
+            <SearchIcon />
+          </AnimatedIconButton>
+        </Tooltip>
+      </SearchPaper>
+    </SearchContainer>
+  );
+};
+
+export default SearchBar;
+
 
 // Styled components
 const SearchPaper = styled(Paper)(({ theme }) => ({
@@ -137,71 +183,25 @@ const SearchContainer = styled(Grid)(({ theme }) => ({
   }
 }));
 
-const SearchBar = () => {
-  const [link, setLink] = useState("");
-  const [isSearching, setIsSearching] = useState(false);
-  const dispatch = useDispatch();
-  const inputRef = useRef(null);
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const updateLink = (event) => {
-    setLink(event.target.value);
-  };
+// Define animations
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }`;
 
-  const handleSearch = () => {
-    if (link.trim()) {
-      setIsSearching(true);
-      dispatch(setCurrVideoLink(link))
-      dispatch(fetchVideoData(link))
-        .finally(() => {
-          setIsSearching(false);
-        });
-    }
-  };
-
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      handleSearch();
-    }
-  };
-
-  const handleFocus = () => {
-    if (inputRef.current) {
-      inputRef.current.select();
-    }
-  };
-
-  return (
-    <SearchContainer>
-      <SearchPaper elevation={3}>
-        <LinkIconWrapper />
-        <StyledInputBase
-          placeholder={isMobile ? "Enter YouTube link" : "Enter YouTube video link to analyze"}
-          value={link}
-          onChange={updateLink}
-          onKeyDown={handleKeyDown}
-          inputRef={inputRef}
-          onFocus={handleFocus}
-          inputProps={{ 'aria-label': 'search youtube video' }}
-          startAdornment={null}
-          fullWidth
-        />
-        <StyledDivider orientation="vertical" />
-        <Tooltip title="Search">
-          <AnimatedIconButton 
-            color="primary" 
-            aria-label="search video"
-            onClick={handleSearch}
-            disabled={isSearching || !link.trim()}
-          >
-            <SearchIcon />
-          </AnimatedIconButton>
-        </Tooltip>
-      </SearchPaper>
-    </SearchContainer>
-  );
-};
-
-export default SearchBar;
+const pulse = keyframes`
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }`;

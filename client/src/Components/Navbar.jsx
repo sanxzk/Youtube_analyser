@@ -1,6 +1,6 @@
 import { Button, Grid, styled, Typography } from "@mui/material";
 import React from "react";
-import logoImg from "../assets/logo.png";
+import logoImg from "../assets/YTLOGO.png";
 import MenuIcon from "@mui/icons-material/Menu";
 import LightModeIcon from "@mui/icons-material/LightMode";
 
@@ -8,8 +8,8 @@ const Navbar = () => {
   return (
     <NavbarContainer>
       <LogoNameWrap>
-        <img src={logoImg} alt="logo" height={25} width={25} />
-        <Typography sx={{ color: "white", fontWeight: 600 }}>
+        <img src={logoImg} alt="logo" height={65} width={65} />
+        <Typography sx={{ color: "red", fontWeight: 600 }}>
           YoutubeAnalyser
         </Typography>
       </LogoNameWrap>
@@ -40,7 +40,6 @@ const LogoNameWrap = styled(Grid)(({ theme }) => ({
   flexDirection: "row",
   justifyContent: "flex-start",
   alignItems: "center",
-  gap: 13,
 }));
 
 const IconWrap = styled(Grid)(({ theme }) => ({

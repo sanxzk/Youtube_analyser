@@ -81,6 +81,8 @@ const VideoDataCont = ({ data }) => {
   );
 };
 
+export default VideoDataCont;
+
 // Helper function to format numbers (e.g., 1000 -> 1K)
 const formatNumber = (num) => {
   if (num >= 1000000) {
@@ -388,5 +390,3 @@ const EarningsAmount = styled(Typography)(({ theme }) => ({
     fontSize: '2rem',
   },
 }));
-
-export default VideoDataCont;

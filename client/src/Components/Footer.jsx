@@ -7,11 +7,14 @@ const Footer = () => {
     <FooterContainer>
       <SocialLinks />
       <TextContainer>
-        <Typography
-          sx={{ color: "rgba(230, 230, 230, 0.81)", fontWeight: 600 }}
-        >
-          Save your precious time by using this website just to show everything
-          collectively. @Sanjana Sharma &#x2764;
+        <Typography sx={{ color: "white", fontWeight: 600 }}>
+          Made With Passion &#128293; 
+          by <a
+            href="https://www.linkedin.com/in/sanjanasharma14/"
+            style={{ color: "white" }}
+          >
+            SANJANA SHARMA
+          </a> Copyright © YouTube Analyser 2025
         </Typography>
       </TextContainer>
     </FooterContainer>

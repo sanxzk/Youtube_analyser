@@ -7,12 +7,12 @@ function getYouTubeVideoId(link) {
   const regex =
     /(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/|youtube\.com\/shorts\/)([^"&?/ ]{11})/;
   const match = link.match(regex);
-  return match ? match[1] : null;
+  return match ? match[1] : null;
 }
 
 async function getVideoInfo(link) {
   try {
-    const videoId =  getYouTubeVideoId(link);
+    const videoId = getYouTubeVideoId(link);
     const apiUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=${videoId}&key=${apiKey}`;
     // console.log(apiUrl);
     const response = await axios.get(apiUrl);
@@ -27,7 +27,7 @@ async function getVideoInfo(link) {
         title: snippet.title,
         views: statistics.viewCount,
         likes: statistics.likeCount,
-        comments: statistics.commentCount?statistics.commentCount:0,
+        comments: statistics.commentCount ? statistics.commentCount : 0,
         uploadedOn: snippet.publishedAt,
         subscribers,
       };
